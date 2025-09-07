@@ -44,6 +44,7 @@
           <div class="cta-group" id="download">
             <a class="btn btn-primary" href="https://flashdeskweb-production.up.railway.app/" target="_blank" rel="noopener">Open in Browser</a>
             <a class="btn btn-ghost" href="#features">See features</a>
+            <a class="btn" id="hero-download" href="assets/FlashDesk-Host.zip" download>Download for macOS</a>
           </div>
           <div class="subnote">No sign‑up. Local app. You control your data.</div>
         </div>
@@ -95,19 +96,19 @@
           <p class="muted">A peek at Flash Desk in action. Click to enlarge.</p>
           <div class="gallery-grid">
             <figure class="shot">
-              <img loading="lazy" src="assets/Screenshot 2025-09-07 at 20.16.20.png" alt="Clipboard sync interface" />
+              <img loading="lazy" decoding="async" fetchpriority="low" src="assets/Screenshot 2025-09-07 at 20.16.20.png" alt="Clipboard sync interface" />
               <figcaption>Clipboard Sync</figcaption>
             </figure>
             <figure class="shot">
-              <img loading="lazy" src="assets/Screenshot 2025-09-07 at 20.16.47.png" alt="High resolution, high framerate streaming" />
+              <img loading="lazy" decoding="async" fetchpriority="low" src="assets/Screenshot 2025-09-07 at 20.16.47.png" alt="High resolution, high framerate streaming" />
               <figcaption>High‑Res, High‑FPS Video</figcaption>
             </figure>
             <figure class="shot">
-              <img loading="lazy" src="assets/Screenshot 2025-09-07 at 20.17.07.png" alt="Diagnostics overlay with live stats" />
+              <img loading="lazy" decoding="async" fetchpriority="low" src="assets/Screenshot 2025-09-07 at 20.17.07.png" alt="Diagnostics overlay with live stats" />
               <figcaption>Diagnostic Overlay</figcaption>
             </figure>
             <figure class="shot">
-              <img loading="lazy" src="assets/Screenshot 2025-09-07 at 20.18.59.png" alt="Command module UI" />
+              <img loading="lazy" decoding="async" fetchpriority="low" src="assets/Screenshot 2025-09-07 at 20.18.59.png" alt="Command module UI" />
               <figcaption>Command Module</figcaption>
             </figure>
           </div>
@@ -183,6 +184,7 @@
       // Detect available installers and wire buttons
       (function resolveInstallers() {
         const buttons = document.querySelectorAll('.platform[data-candidates]');
+        const heroBtn = document.getElementById('hero-download');
         const tryHead = async (url) => {
           try {
             const res = await fetch(url, { method: 'HEAD' });
@@ -209,9 +211,12 @@
           }
         };
         (async () => {
+          let macUrl = null;
           for (const el of buttons) {
-            await resolveOne(el);
+            const url = await resolveOne(el);
+            if (!macUrl && el.dataset.platform === 'mac' && url) macUrl = url;
           }
+          if (heroBtn && macUrl) heroBtn.href = macUrl;
         })();
       })();
 
