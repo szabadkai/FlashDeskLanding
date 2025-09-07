@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flash Desk — Fast. Focused. Minimal.</title>
+    <meta name="description" content="Flash Desk is a lightweight desktop companion that helps you stay focused with a fast, minimal workflow." />
+
+    <meta property="og:title" content="Flash Desk" />
+    <meta property="og:description" content="Fast, focused, minimal. Get more done with Flash Desk." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="." />
+
+    <link rel="preload" href="assets/Hailuo_Video_Stormy night A single lightni_421093598329626630.mp4" as="video" type="video/mp4">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">⚡️</div>
+          <span class="name">Flash Desk</span>
+        </div>
+        <nav class="nav">
+          <a href="#features">Features</a>
+          <a href="#download" class="btn btn-small">Download</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-label="Flash Desk hero">
+        <div class="hero-media" aria-hidden="true">
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+            <source src="assets/Hailuo_Video_Stormy night A single lightni_421093598329626630.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-content">
+          <h1>Work at the speed of thought</h1>
+          <p>Flash Desk is a minimalist desktop helper. Launch, switch, and act instantly — no friction, just flow.</p>
+          <div class="cta-group" id="download">
+            <a class="btn btn-primary" href="assets/FlashDesk-Host.zip" download>Download for macOS</a>
+            <a class="btn btn-ghost" href="#features">See features</a>
+          </div>
+          <div class="subnote">No sign‑up. Local app. You control your data.</div>
+        </div>
+      </section>
+
+      <section class="features" id="features">
+        <div class="container grid">
+          <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Blazing Fast</h3>
+            <p>Optimized for instant response so you stay in flow.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🎯</div>
+            <h3>Focused</h3>
+            <p>A clean interface that surfaces exactly what you need.</p>
+          </div>
+          <div class="card">
+            <div class="icon">🧭</div>
+            <h3>Effortless</h3>
+            <p>Thoughtful defaults and shortcuts that just make sense.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <h2>Ready to move faster?</h2>
+          <p>Grab the app and feel the difference in minutes.</p>
+          <a class="btn btn-primary" href="assets/FlashDesk-Host.zip" download>Download Flash Desk</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© <span id="year"></span> Flash Desk</span>
+        <span class="sep">•</span>
+        <a href="#home">Back to top</a>
+      </div>
+    </footer>
+
+    <script>
+      // Update year and respect reduced motion
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (mq.matches) {
+        document.querySelectorAll('video').forEach(v => { v.removeAttribute('autoplay'); v.pause?.(); });
+      }
+    </script>
+  </body>
+  </html>
+
