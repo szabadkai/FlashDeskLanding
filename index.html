@@ -11,7 +11,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="." />
 
-    <link rel="preload" href="assets/Hailuo_Video_Stormy night A single lightni_421093598329626630.mp4" as="video" type="video/mp4">
+    <link rel="preload" href="assets/Hailuo_Video_Stormy night A single lightni_421093598329626631.mp4" as="video" type="video/mp4">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -22,6 +22,7 @@
           <span class="name">Flash Desk</span>
         </div>
         <nav class="nav">
+          <a href="https://flashdeskweb-production.up.railway.app/" target="_blank" rel="noopener">Web Client</a>
           <a href="#features">Features</a>
           <a href="#download" class="btn btn-small">Download</a>
         </nav>
@@ -32,6 +33,7 @@
       <section class="hero" id="home" aria-label="Flash Desk hero">
         <div class="hero-media" aria-hidden="true">
           <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+            <source src="assets/Hailuo_Video_Stormy night A single lightni_421093598329626631.mp4" type="video/mp4" />
             <source src="assets/Hailuo_Video_Stormy night A single lightni_421093598329626630.mp4" type="video/mp4" />
           </video>
           <div class="hero-overlay"></div>
@@ -40,7 +42,7 @@
           <h1>Work at the speed of thought</h1>
           <p>Flash Desk is a minimalist desktop helper. Launch, switch, and act instantly — no friction, just flow.</p>
           <div class="cta-group" id="download">
-            <a class="btn btn-primary" href="assets/FlashDesk-Host.zip" download>Download for macOS</a>
+            <a class="btn btn-primary" href="https://flashdeskweb-production.up.railway.app/" target="_blank" rel="noopener">Open in Browser</a>
             <a class="btn btn-ghost" href="#features">See features</a>
           </div>
           <div class="subnote">No sign‑up. Local app. You control your data.</div>
@@ -48,21 +50,66 @@
       </section>
 
       <section class="features" id="features">
-        <div class="container grid">
-          <div class="card">
-            <div class="icon">⚡</div>
-            <h3>Blazing Fast</h3>
-            <p>Optimized for instant response so you stay in flow.</p>
+        <div class="container">
+          <div class="grid">
+            <div class="card">
+              <div class="icon">📋</div>
+              <h3>Clipboard Sync</h3>
+              <p>Seamlessly keep clipboards in sync across devices for instant paste anywhere.</p>
+            </div>
+            <div class="card">
+              <div class="icon">🖥️</div>
+              <h3>High‑Res, High‑FPS Video</h3>
+              <p>Crisp, fluid streams that preserve detail even during rapid motion.</p>
+            </div>
+            <div class="card">
+              <div class="icon">⚡</div>
+              <h3>Low‑Latency Control</h3>
+              <p>Interactive remote sessions with near‑instant input feedback.
+            </div>
+            <div class="card">
+              <div class="icon">🔎</div>
+              <h3>Diagnostic Overlay</h3>
+              <p>Live metrics and stats to understand performance at a glance.</p>
+            </div>
+            <div class="card">
+              <div class="icon">🌐</div>
+              <h3>Web‑Native Client</h3>
+              <p>Run in the browser with no installs — just open and go.</p>
+              <div class="actions">
+                <a class="btn btn-ghost btn-small" href="https://flashdeskweb-production.up.railway.app/" target="_blank" rel="noopener">Open Web Client</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="icon">⌘</div>
+              <h3>Command Module</h3>
+              <p>Powerful commands and shortcuts that streamline repetitive tasks.</p>
+            </div>
           </div>
-          <div class="card">
-            <div class="icon">🎯</div>
-            <h3>Focused</h3>
-            <p>A clean interface that surfaces exactly what you need.</p>
-          </div>
-          <div class="card">
-            <div class="icon">🧭</div>
-            <h3>Effortless</h3>
-            <p>Thoughtful defaults and shortcuts that just make sense.</p>
+        </div>
+      </section>
+
+      <section class="gallery" id="screenshots">
+        <div class="container">
+          <h2>Screenshots</h2>
+          <p class="muted">A peek at Flash Desk in action. Click to enlarge.</p>
+          <div class="gallery-grid">
+            <figure class="shot">
+              <img loading="lazy" src="assets/Screenshot 2025-09-07 at 20.16.20.png" alt="Clipboard sync interface" />
+              <figcaption>Clipboard Sync</figcaption>
+            </figure>
+            <figure class="shot">
+              <img loading="lazy" src="assets/Screenshot 2025-09-07 at 20.16.47.png" alt="High resolution, high framerate streaming" />
+              <figcaption>High‑Res, High‑FPS Video</figcaption>
+            </figure>
+            <figure class="shot">
+              <img loading="lazy" src="assets/Screenshot 2025-09-07 at 20.17.07.png" alt="Diagnostics overlay with live stats" />
+              <figcaption>Diagnostic Overlay</figcaption>
+            </figure>
+            <figure class="shot">
+              <img loading="lazy" src="assets/Screenshot 2025-09-07 at 20.18.59.png" alt="Command module UI" />
+              <figcaption>Command Module</figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -88,13 +135,7 @@
         </div>
       </section>
 
-      <section class="cta">
-        <div class="container">
-          <h2>Ready to move faster?</h2>
-          <p>Grab the app and feel the difference in minutes.</p>
-          <a class="btn btn-primary" href="assets/FlashDesk-Host.zip" download>Download Flash Desk</a>
-        </div>
-      </section>
+      
     </main>
 
     <footer class="site-footer">
@@ -104,6 +145,14 @@
         <a href="#home">Back to top</a>
       </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Screenshot viewer">
+      <div class="lightbox-content">
+        <img alt="" id="lightbox-img" />
+        <div class="lightbox-caption" id="lightbox-cap"></div>
+      </div>
+    </div>
 
     <script>
       // Update year and respect reduced motion
@@ -118,6 +167,7 @@
       (function logConsoleLinks() {
         const repo = 'https://github.com/szabadkai/FlashDeskLanding';
         const issues = repo + '/issues';
+        const webClient = 'https://flashdeskweb-production.up.railway.app/';
         const download = new URL('assets/FlashDesk-Host.zip', location.href).href;
         const tag = 'background: linear-gradient(135deg,#7c5cff,#00e5a8); color: #fff; padding: 3px 8px; border-radius: 6px; font-weight: 700;';
         const dim = 'color: #a6adbb;';
@@ -127,12 +177,12 @@
         console.log('• Download: %c' + download, link);
         console.log('• Repo: %c' + repo, link);
         console.log('• Issues: %c' + issues, link);
+        console.log('• Web Client: %c' + webClient, link);
       })();
 
       // Detect available installers and wire buttons
       (function resolveInstallers() {
         const buttons = document.querySelectorAll('.platform[data-candidates]');
-        const heroBtn = document.querySelector('.hero .btn-primary');
         const tryHead = async (url) => {
           try {
             const res = await fetch(url, { method: 'HEAD' });
@@ -159,14 +209,28 @@
           }
         };
         (async () => {
-          let macUrl = null;
           for (const el of buttons) {
-            const url = await resolveOne(el);
-            if (!macUrl && el.dataset.platform === 'mac' && url) macUrl = url;
+            await resolveOne(el);
           }
-          // Update hero download to best mac build if found
-          if (heroBtn && macUrl) heroBtn.href = macUrl;
         })();
+      })();
+
+      // Lightweight lightbox for screenshots
+      (function galleryLightbox() {
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        const lbCap = document.getElementById('lightbox-cap');
+        if (!lb || !lbImg) return;
+        const open = (src, cap) => {
+          lbImg.src = src; lbCap.textContent = cap || '';
+          lb.classList.add('open');
+        };
+        const close = () => { lb.classList.remove('open'); lbImg.src = ''; lbCap.textContent=''; };
+        document.querySelectorAll('.gallery .shot img').forEach(img => {
+          img.addEventListener('click', () => open(img.src, img.closest('figure')?.querySelector('figcaption')?.textContent));
+        });
+        lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
       })();
     </script>
   </body>
