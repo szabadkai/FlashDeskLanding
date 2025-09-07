@@ -67,6 +67,27 @@
         </div>
       </section>
 
+      <section class="downloads" id="download">
+        <div class="container">
+          <h2>Download Flash Desk</h2>
+          <p class="muted">Auto-detects available installers below. If a button doesn’t appear, check Releases.</p>
+          <div class="downloads-grid">
+            <a class="btn btn-primary platform" data-platform="mac" data-candidates='["assets/FlashDesk-Host.zip","assets/FlashDesk-Host-mac.zip","assets/FlashDesk-Host.dmg","assets/FlashDesk-Host-mac-arm64.zip","assets/FlashDesk-Host-mac-x64.zip"]' href="#" download>
+              🍎 macOS
+            </a>
+            <a class="btn btn-primary platform" data-platform="win" data-candidates='["assets/FlashDesk-Host-setup.exe","assets/FlashDesk-Host-win.exe","assets/FlashDesk-Host.msi"]' href="#" download>
+              🪟 Windows
+            </a>
+            <a class="btn btn-primary platform" data-platform="linux" data-candidates='["assets/FlashDesk-Host.AppImage","assets/FlashDesk-Host.deb","assets/FlashDesk-Host.rpm","assets/FlashDesk-Host-linux.tar.gz"]' href="#" download>
+              🐧 Linux
+            </a>
+          </div>
+          <div class="downloads-more">
+            <a class="btn btn-ghost" href="https://github.com/szabadkai/FlashDeskLanding/releases">All releases</a>
+          </div>
+        </div>
+      </section>
+
       <section class="cta">
         <div class="container">
           <h2>Ready to move faster?</h2>
@@ -92,7 +113,61 @@
       if (mq.matches) {
         document.querySelectorAll('video').forEach(v => { v.removeAttribute('autoplay'); v.pause?.(); });
       }
+
+      // Developer console links
+      (function logConsoleLinks() {
+        const repo = 'https://github.com/szabadkai/FlashDeskLanding';
+        const issues = repo + '/issues';
+        const download = new URL('assets/FlashDesk-Host.zip', location.href).href;
+        const tag = 'background: linear-gradient(135deg,#7c5cff,#00e5a8); color: #fff; padding: 3px 8px; border-radius: 6px; font-weight: 700;';
+        const dim = 'color: #a6adbb;';
+        const link = 'color:#7c5cff; text-decoration: underline;';
+        console.log('%cFlash Desk', tag, 'Fast. Focused. Minimal.');
+        console.log('%cUseful links', dim);
+        console.log('• Download: %c' + download, link);
+        console.log('• Repo: %c' + repo, link);
+        console.log('• Issues: %c' + issues, link);
+      })();
+
+      // Detect available installers and wire buttons
+      (function resolveInstallers() {
+        const buttons = document.querySelectorAll('.platform[data-candidates]');
+        const heroBtn = document.querySelector('.hero .btn-primary');
+        const tryHead = async (url) => {
+          try {
+            const res = await fetch(url, { method: 'HEAD' });
+            return res.ok;
+          } catch { return false; }
+        };
+        const resolveOne = async (el) => {
+          try {
+            const candidates = JSON.parse(el.getAttribute('data-candidates'));
+            for (const path of candidates) {
+              const url = new URL(path, location.href).href;
+              if (await tryHead(url)) {
+                el.href = url;
+                el.style.display = '';
+                return url;
+              }
+            }
+            // Hide if none exist
+            el.style.display = 'none';
+            return null;
+          } catch {
+            el.style.display = 'none';
+            return null;
+          }
+        };
+        (async () => {
+          let macUrl = null;
+          for (const el of buttons) {
+            const url = await resolveOne(el);
+            if (!macUrl && el.dataset.platform === 'mac' && url) macUrl = url;
+          }
+          // Update hero download to best mac build if found
+          if (heroBtn && macUrl) heroBtn.href = macUrl;
+        })();
+      })();
     </script>
   </body>
   </html>
-
